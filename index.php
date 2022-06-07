@@ -1,5 +1,18 @@
 <?php
 
+  session_start();
+
+  if( isset($_SESSION["username"]) ) {
+    echo "
+      <div class='d-flex justify-content-between mt-2'>
+      <h5 class='d-inline-block'>Hi, " . $_SESSION["username"] . "</h5>" .
+      "<a href='logout.php' class='btn btn-danger'>Sign out</a>" .
+      "</div>"
+    ;
+  } else {
+    header("Location: login.php");
+  }
+
   require './functions/connect.php';
   
   $data_mahasiswa = query("SELECT * FROM mahasiswa")
@@ -24,7 +37,7 @@
   <body>
   
     <div class="container">
-      <h1 class="mt-3"">Daftar Mahasiswa</h1>
+      <h1>Daftar Mahasiswa</h1>
 
       
       <div class="row">
