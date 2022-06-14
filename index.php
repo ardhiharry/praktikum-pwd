@@ -4,11 +4,27 @@
 
   if( isset($_SESSION["username"]) ) {
     echo "
-      <div class='d-flex justify-content-between mt-2'>
-      <h5 class='d-inline-block'>Hi, " . $_SESSION["username"] . "</h5>" .
-      "<a href='logout.php' class='btn btn-danger'>Sign out</a>" .
-      "</div>"
-    ;
+      <nav class='navbar navbar-expand-lg navbar-dark bg-primary shadow-sm'>
+        <div class='container'>
+          <a class='navbar-brand' href='#home'><img src='./img/logo.svg' alt='Logo' width='55'></a>
+          <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+            <span class='navbar-toggler-icon'></span>
+          </button>
+          <div class='collapse navbar-collapse' id='navbarNav'>
+            <ul class='navbar-nav ms-auto'>
+              <li class='nav-item dropdown'>
+                <a class='nav-link dropdown-toggle active' href='#' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                  Hi, " . $_SESSION['username'] . "
+                </a>
+                <ul class='dropdown-menu' aria-labelledby='navbarDropdown'>
+                  <li><a class='dropdown-item' href='logout.php'>Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    ";
   } else {
     header("Location: login.php");
   }
@@ -37,11 +53,12 @@
   <body>
   
     <div class="container">
-      <h1>Daftar Mahasiswa</h1>
-
       
-      <div class="row">
+      
+      <div class="row justify-content-center">
         <div class="col-md-8">
+          <h1 class="mt-3">Daftar Mahasiswa</h1>
+
           <h3 class="d-flex justify-content-end">
             <a href="tambah.php" class="btn btn-success">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
